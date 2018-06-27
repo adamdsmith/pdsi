@@ -39,7 +39,7 @@ pdsi_plot <- function(lat = NULL, lon = NULL, address = NULL, nyrs = 10) {
                 stringsAsFactors = FALSE,
                 quiet = TRUE)
   pdsi <- readRDS(system.file("extdata/pdsi.rds", package = "pdsi"))
-  cd_pt <- cd[as.numeric(st_within(pt, cd)),]
+  cd_pt <- suppressMessages(cd[as.numeric(st_within(pt, cd)),])
   cd_st <- pull(cd_pt, .data$st_abbr)
   cd_nm <- pull(cd_pt, .data$cd_name)
   climdiv_pt <- pull(cd_pt, .data$climdiv) %>% as.character()
@@ -57,9 +57,9 @@ pdsi_plot <- function(lat = NULL, lon = NULL, address = NULL, nyrs = 10) {
                                 max(cd_pdsi$ymd)))
   pdsi_dy <- dygraph(pdsi_ts, main = title) %>%
     dyOptions(axisLineWidth = 2, connectSeparatedPoints = FALSE,
-              axisLabelFontSize = 18,
+              axisLabelFontSize = 30,
               strokeWidth = 1.5) %>%
-    dyAxis("y", label = "Palmer Drought Severity Index") %>%
+    dyAxis("y", label = "Palmer Drought Severity Index", labelWidth = 30) %>%
     dySeries("V1", label = "PDSI") %>%
     dyLegend(show = "follow", width = 150) %>%
     dyRangeSelector(height = 20, strokeColor = "", dateWindow = init_window)
