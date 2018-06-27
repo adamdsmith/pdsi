@@ -16,7 +16,7 @@
 #' }
 #' @export
 
-plot_pdsi <- function(lat = NULL, lon = NULL, address = NULL, nyrs = 10) {
+pdsi_plot <- function(lat = NULL, lon = NULL, address = NULL, nyrs = 10) {
   if (is.null(c(lat, lon, address)))
     stop("At least one of lat/lon or address must be specified.")
   if (!is.null(address)) {

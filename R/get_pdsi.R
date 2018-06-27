@@ -15,7 +15,7 @@
 #' }
 #' @export
 
-get_pdsi <- function(url = "climdiv-pdsidv-v1.0.0-20180604", update = FALSE){
+pdsi_get <- function(url = "climdiv-pdsidv-v1.0.0-20180604", update = FALSE){
   base_url <- "https://www1.ncdc.noaa.gov/pub/data/cirs/climdiv/"
   url <- paste0(base_url, url)
   pdsi <- suppressMessages(
