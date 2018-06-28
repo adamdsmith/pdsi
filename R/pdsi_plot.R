@@ -13,16 +13,20 @@
 #' @param fill one of NULL, "RdBu" (default), "BrBG", or "PuOr". Color scheme
 #'  to use to indicate the different drought/wet bands behind the PDSI time
 #'  series. NULL suppresses the background fill.
+#' @param halo logical (default TRUE); display thin white border around PDSI
+#'  time series line to aid viewing in more several categories
 #' @examples
 #' \dontrun{
 #' pdsi_plot(34, -83)
 #' pdsi_plot(address = "Alligator River NWR")
 #' pdsi_plot(39, -77, fill = NULL)
+#' pdsi_plot(39, -77, fill = "BrBG", halo = FALSE)
 #' }
 #' @export
 
 pdsi_plot <- function(lat = NULL, lon = NULL, address = NULL, nyrs = 10,
-                      fill = c("RdBu", "BrBG", "PuOr")) {
+                      fill = c("RdBu", "BrBG", "PuOr"),
+                      halo = TRUE) {
   if (is.null(c(lat, lon, address)))
     stop("At least one of lat/lon or address must be specified.")
   if (!is.null(address)) {
@@ -87,11 +91,17 @@ pdsi_plot <- function(lat = NULL, lon = NULL, address = NULL, nyrs = 10,
               axisLabelFontSize = 24, gridLineColor = "gray50") %>%
     dyAxis("y", labelWidth = 24,
            label = "DRY &larr; Palmer Drought Severity Index &rarr; WET") %>%
-    dySeries("V1", label = "PDSI", color = "black", drawPoints = TRUE,
-             strokeWidth = 2, pointSize = 2.5) %>%
     dyLimit(pdsi_avg, label = "Mean PDSI (1901-2000)", color = "gray30",
             strokePattern = "dashed") %>%
     dyLegend(show = "follow", width = 150) %>%
     dyRangeSelector(height = 24, strokeColor = "", dateWindow = init_window)
-  pdsi_dy
+
+  if (halo)
+    pdsi_dy %>%
+    dySeries("V1", label = "PDSI", color = "black", strokeWidth = 2,
+             strokeBorderWidth = 1, strokeBorderColor = "white")
+  else
+    pdsi_dy %>%
+    dySeries("V1", label = "PDSI", color = "black", drawPoints = TRUE,
+             strokeWidth = 2, pointSize = 2.5)
 }
