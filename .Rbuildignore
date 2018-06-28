@@ -1,2 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+README_cache
+README.Rmd
+.travis.yml
