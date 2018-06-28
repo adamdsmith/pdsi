@@ -94,7 +94,8 @@ pdsi_plot <- function(lat = NULL, lon = NULL, address = NULL, nyrs = 10,
     dyLimit(pdsi_avg, label = "Mean PDSI (1901-2000)", color = "gray30",
             strokePattern = "dashed") %>%
     dyLegend(show = "follow", width = 150) %>%
-    dyRangeSelector(height = 24, strokeColor = "", dateWindow = init_window)
+    dyRangeSelector(height = 24, strokeColor = "", dateWindow = init_window) %>%
+    dyCSS(system.file("extdata/dygraph.css", package = "pdsi"))
 
   if (halo)
     pdsi_dy %>%

@@ -43,4 +43,4 @@ pdsi_plot(32.44757, -93.671768, fill = "BrBG", halo = FALSE)
 
 ![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
-There are a view display options you can choose among. See the help file `?pdsi_plot` for a description.
+There are a few display options you can choose among. See the help file `?pdsi_plot` for a description.

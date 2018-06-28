@@ -1,0 +1,10 @@
+.dygraph-title {
+  font-weight: bold;
+}
+.dygraph-label {
+  font-family: Helvetica;
+}
+.dygraph-axis-label {
+  font-family: Helvetica;
+  font-size: 12px;
+}
