@@ -26,11 +26,8 @@ pdsi_plot <- function(lat = NULL, lon = NULL, address = NULL, nyrs = 10) {
       stop('`address` must be a character scalar of a street address ',
            'or place name (e.g. "Mattamuskeet NWR" or "135 Phoenix Rd, Athens, GA")')
     ll = tryCatch(ll <- suppressMessages(ggmap::geocode(address)),
-                  error = function(e) return(e), 
-                  warning = function(w) {
-                    if (all(is.na(ll))) stop(w)
-                    return(ll)
-                  })
+                  error = function(e) return(e),
+                  warning = function(w) stop(w))
     lat <- ll$lat; lon <- ll$lon
   }
   pt <- st_point(c(lon, lat)) %>%
