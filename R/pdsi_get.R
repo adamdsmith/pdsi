@@ -24,7 +24,7 @@ pdsi_get <- function(url = "climdiv-pdsidv-v1.0.0-20180604", update = FALSE){
                                       c("climdiv", "el", "year", 1:12)),
                     na = "-99.99"))
   pdsi <- dplyr::select(pdsi, -2) %>%
-    tidyr::gather(month, pdsi, -.data$climdiv, -.data$year) %>%
+    tidyr::gather(key = "month", value = "pdsi", -.data$climdiv, -.data$year) %>%
     mutate(month = as.integer(.data$month)) %>%
     arrange(.data$climdiv, .data$year, .data$month) %>%
     filter(!is.na(.data$pdsi))
