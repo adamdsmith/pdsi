@@ -4,7 +4,8 @@
 \alias{pdsi_plot}
 \title{Generate interactive plot US Palmer Drought Severity Index Data}
 \usage{
-pdsi_plot(lat = NULL, lon = NULL, address = NULL, nyrs = 10)
+pdsi_plot(lat = NULL, lon = NULL, address = NULL, nyrs = 10,
+  fill = c("RdBu", "BrBG", "PuOr"))
 }
 \arguments{
 \item{lat}{numeric scalar of position latitude (decimal degrees; WGS84)}
@@ -17,13 +18,19 @@ pdsi_plot(lat = NULL, lon = NULL, address = NULL, nyrs = 10)
 
 \item{nyrs}{numeric (default = 10); how many years before present would
 you like the initial graph to display?}
+
+\item{fill}{one of NULL, "RdBu" (default), "BrBG", or "PuOr". Color scheme
+to use to indicate the different drought/wet bands behind the PDSI time
+series. NULL suppresses the background fill.}
 }
 \description{
-Generate interactive plot US Palmer Drought Severity Index Data
+For description of PDSI index and drought/wetness levels, see the README
+ at \url{https://www1.ncdc.noaa.gov/pub/data/cirs/climdiv/drought-readme.txt}
 }
 \examples{
 \dontrun{
 pdsi_plot(34, -83)
 pdsi_plot(address = "Alligator River NWR")
+pdsi_plot(39, -77, fill = NULL)
 }
 }

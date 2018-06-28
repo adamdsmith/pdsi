@@ -21,7 +21,8 @@ Imports:
     utils,
     zoo (>= 1.8.2)
 Suggests:
-    ggmap (>= 2.6.1)
+    ggmap (>= 2.6.1),
+    RColorBrewer (>= 1.1.2)
 License: CC0
 Copyright: This software is in the public domain because it contains materials
     that originally came from the United States Fish & Wildlife Service, an agency
