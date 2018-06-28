@@ -5,14 +5,12 @@
 #' @param address character scalar of a street address or place name
 #'  (e.g. "Mattamuskeet NWR" or "135 Phoenix Rd, Athens, GA"); overrides
 #'  \code{lat} and \code{lon} if specified. See example
-#' @param nyrs integer (default = 10); how many years before present would
+#' @param nyrs numeric (default = 10); how many years before present would
 #'  you like the initial graph to display?
 #' @examples
 #' \dontrun{
-#' plot_pdsi(34, -83)
-#' plot_pdsi(address = "Alligator River NWR")
-#' # Return only ASOS stations...
-#' find_wx_stns(address = "Mattamuskeet NWR", asos_only = TRUE, plot = TRUE)
+#' pdsi_plot(34, -83)
+#' pdsi_plot(address = "Alligator River NWR")
 #' }
 #' @export
 
